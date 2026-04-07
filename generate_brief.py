@@ -12,8 +12,10 @@ Usage:
 
 import json
 import os
+import shutil
 import sys
 from datetime import datetime, timezone, timedelta
+from pathlib import Path
 
 import requests
 import yfinance as yf
@@ -289,11 +291,28 @@ def main():
     if is_friday and "btc_friday_note" in ai:
         brief["macro"]["btc_friday_note"] = ai["btc_friday_note"]
 
-    # Write
+    # Write main brief.json
     with open(OUTPUT_FILE, "w") as f:
         json.dump(brief, f, indent=2)
 
+    # Write dated archive copies
+    script_dir = Path(__file__).resolve().parent
+    briefs_dir = script_dir / "briefs"
+    briefs_dir.mkdir(exist_ok=True)
+
+    date_str = now.strftime("%Y-%m-%d")
+    dated_json = briefs_dir / f"{date_str}.json"
+    with open(dated_json, "w") as f:
+        json.dump(brief, f, indent=2)
+
+    # Copy brief.html template as the dated HTML page
+    brief_template = script_dir / "brief.html"
+    dated_html = briefs_dir / f"{date_str}.html"
+    if brief_template.exists():
+        shutil.copy2(brief_template, dated_html)
+
     print(f"\nBrief written to {OUTPUT_FILE}")
+    print(f"Archive written to {dated_json} and {dated_html}")
     print(f"\n--- HEADLINE ---")
     print(brief["ai_research"].get("headline", ""))
     print(f"\nDone.")
