@@ -1,0 +1,113 @@
+{
+  "generated_at": "2026-04-07T12:00:00-04:00",
+  "macro": {
+    "headline": "Risk-Off Intensifies as Iran Deadline Looms — Markets Brace for Binary Outcome",
+    "bullets": [
+      "SPY down 0.6% and QQQ shedding 1.2% as geopolitical risk reprices across equities — Strait of Hormuz deadline at 8PM ET tonight is the catalyst everyone's watching.",
+      "Oil futures spiking on supply disruption fears; USO up 2.4% as traders hedge energy exposure ahead of the Iran decision.",
+      "Growth and momentum names getting hit hardest — TSLA, LMND, and speculative EV/AV plays all under pressure. Cash is not a bad position here."
+    ]
+  },
+  "watchlist": [
+    {
+      "ticker": "SPY",
+      "price": 655.12,
+      "change_pct": -0.60,
+      "signal": "🟡",
+      "note": "Holding 650 support so far — break below opens 640 gap"
+    },
+    {
+      "ticker": "QQQ",
+      "price": 581.34,
+      "change_pct": -1.20,
+      "signal": "🔴",
+      "note": "Tech leading the selloff, 575 is the line in the sand"
+    },
+    {
+      "ticker": "TSLA",
+      "price": 340.21,
+      "change_pct": -3.59,
+      "signal": "🔴",
+      "note": "JPM $145 PT overhang + weak Q1 deliveries; robotaxi June catalyst is the bull case"
+    },
+    {
+      "ticker": "LMND",
+      "price": 57.93,
+      "change_pct": -6.50,
+      "signal": "🟡",
+      "note": "Ugly tape but fundamentals strong — MS OW $85 PT, earnings May 5"
+    },
+    {
+      "ticker": "RIVN",
+      "price": 14.87,
+      "change_pct": 4.21,
+      "signal": "🟢",
+      "note": "Uber robotaxi partnership $1.25B — 53% growth projected, only green name today"
+    },
+    {
+      "ticker": "PONY",
+      "price": 8.42,
+      "change_pct": 2.15,
+      "signal": "🟢",
+      "note": "Singapore AV regulatory approval — international expansion unlocked"
+    },
+    {
+      "ticker": "MBLY",
+      "price": 15.63,
+      "change_pct": -1.88,
+      "signal": "🟡",
+      "note": "Drifting lower with sector, but SuperVision pipeline intact"
+    },
+    {
+      "ticker": "USO",
+      "price": 74.56,
+      "change_pct": 2.40,
+      "signal": "🟢",
+      "note": "Iran hedge in play — watch for reversal if diplomacy wins"
+    }
+  ],
+  "ev_av": [
+    "RIVN surges on Uber robotaxi partnership announcement — $1.25B deal with 53% projected growth. Biggest AV partnership since Waymo/Jaguar.",
+    "PONY.AI receives Singapore autonomous vehicle regulatory approval, opening Southeast Asian market. Stock up 2% on low volume.",
+    "Tesla robotaxi event still targeted for June — JPMorgan's $145 bear case PT getting attention but Street consensus remains $280+.",
+    "Mobileye (MBLY) SuperVision wins with unnamed OEM rumored — stock not reacting yet, could be a sleeper.",
+    "BYD reportedly testing Level 4 autonomy in Shenzhen, adding pressure to Western AV timelines."
+  ],
+  "opportunity": [
+    {
+      "title": "RIVN Under $15 on Uber Deal Day",
+      "body": "Market is sleeping on the Uber partnership magnitude. $1.25B revenue pipeline with 53% growth — if robotaxi narrative catches, this reprices to $20+ fast. Risk: execution and cash burn rate. Position sizing matters here."
+    },
+    {
+      "title": "USO Straddle Into Iran Deadline",
+      "body": "Binary event tonight at 8PM ET. Oil either spikes on Hormuz escalation or dumps on diplomatic resolution. Options premiums are elevated but a straddle could capture the move either way. Not for the faint of heart."
+    }
+  ],
+  "trade_setups": [
+    {
+      "ticker": "TSLA",
+      "signal": "Support $337",
+      "action": "Hold core, watch robotaxi catalyst in June"
+    },
+    {
+      "ticker": "LMND",
+      "signal": "Oversold RSI",
+      "action": "Add below $55 if earnings guidance holds"
+    },
+    {
+      "ticker": "RIVN",
+      "signal": "Breakout $15.50",
+      "action": "Starter position, trail stop at $13.80"
+    },
+    {
+      "ticker": "USO",
+      "signal": "Event-driven",
+      "action": "Trim into Iran deadline, reassess Wednesday"
+    },
+    {
+      "ticker": "PONY",
+      "signal": "Accumulate",
+      "action": "Small add on Singapore approval, long-term hold"
+    }
+  ]
+}

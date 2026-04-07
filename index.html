@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Andy's Market Brief</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0d1117;
+      --surface: #161b22;
+      --border: #30363d;
+      --text: #e6edf3;
+      --text-dim: #8b949e;
+      --green: #3fb950;
+      --red: #f85149;
+      --yellow: #d29922;
+      --blue: #58a6ff;
+      --accent: #1f6feb;
+    }
+
+    body {
+      font-family: 'SF Mono', 'Cascadia Code', 'Fira Code', 'Consolas', monospace;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 24px 16px;
+    }
+
+    header {
+      text-align: center;
+      padding: 32px 0 24px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 32px;
+    }
+
+    header h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin-bottom: 8px;
+    }
+
+    .timestamp {
+      font-size: 0.85rem;
+      color: var(--text-dim);
+    }
+
+    .timestamp .time {
+      color: var(--blue);
+      font-weight: 600;
+    }
+
+    .status-bar {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 12px;
+      font-size: 0.75rem;
+      color: var(--text-dim);
+    }
+
+    .status-dot {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--green);
+      margin-right: 4px;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    .section {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 24px;
+      margin-bottom: 20px;
+    }
+
+    .section-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .macro-headline {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--yellow);
+      margin-bottom: 12px;
+    }
+
+    .macro-bullets {
+      list-style: none;
+      padding: 0;
+    }
+
+    .macro-bullets li {
+      padding: 8px 0 8px 20px;
+      position: relative;
+      font-size: 0.88rem;
+      color: var(--text-dim);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .macro-bullets li:last-child { border-bottom: none; }
+
+    .macro-bullets li::before {
+      content: '>';
+      position: absolute;
+      left: 0;
+      color: var(--blue);
+      font-weight: 700;
+    }
+
+    /* Watchlist grid */
+    .watchlist-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 12px;
+    }
+
+    .watch-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 16px;
+      transition: border-color 0.2s;
+    }
+
+    .watch-card:hover {
+      border-color: var(--blue);
+    }
+
+    .watch-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .watch-ticker {
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+
+    .watch-signal {
+      font-size: 1.2rem;
+    }
+
+    .watch-price {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .watch-change {
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .watch-change.positive { color: var(--green); }
+    .watch-change.negative { color: var(--red); }
+
+    .watch-note {
+      font-size: 0.78rem;
+      color: var(--text-dim);
+      line-height: 1.5;
+    }
+
+    /* EV/AV bullets */
+    .ev-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .ev-list li {
+      padding: 10px 0 10px 24px;
+      position: relative;
+      font-size: 0.85rem;
+      color: var(--text-dim);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .ev-list li:last-child { border-bottom: none; }
+
+    .ev-list li::before {
+      content: '\26A1';
+      position: absolute;
+      left: 0;
+    }
+
+    /* Opportunity cards */
+    .opp-card {
+      background: var(--bg);
+      border: 1px solid var(--accent);
+      border-radius: 6px;
+      padding: 16px;
+      margin-bottom: 12px;
+    }
+
+    .opp-card:last-child { margin-bottom: 0; }
+
+    .opp-title {
+      font-weight: 700;
+      color: var(--blue);
+      margin-bottom: 8px;
+      font-size: 0.95rem;
+    }
+
+    .opp-body {
+      font-size: 0.83rem;
+      color: var(--text-dim);
+      line-height: 1.6;
+    }
+
+    /* Trade setups table */
+    .trade-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+    }
+
+    .trade-table th {
+      text-align: left;
+      padding: 10px 12px;
+      border-bottom: 2px solid var(--border);
+      color: var(--text-dim);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .trade-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .trade-table tr:last-child td { border-bottom: none; }
+
+    .trade-table .ticker-col {
+      font-weight: 700;
+      color: var(--blue);
+    }
+
+    .trade-table .signal-col {
+      color: var(--yellow);
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 32px 0 24px;
+      color: var(--text-dim);
+      font-size: 0.75rem;
+      border-top: 1px solid var(--border);
+      margin-top: 12px;
+    }
+
+    footer .brand {
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    /* Loading state */
+    .loading {
+      text-align: center;
+      padding: 48px;
+      color: var(--text-dim);
+    }
+
+    .loading::after {
+      content: '';
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      border: 2px solid var(--border);
+      border-top-color: var(--blue);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin-left: 8px;
+      vertical-align: middle;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    @media (max-width: 600px) {
+      .container { padding: 16px 12px; }
+      header h1 { font-size: 1.3rem; }
+      .section { padding: 16px; }
+      .watchlist-grid { grid-template-columns: 1fr; }
+      .watch-price { font-size: 1.1rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>📡 Andy's Market Brief</h1>
+      <div class="timestamp">
+        Generated: <span class="time" id="gen-time">—</span>
+      </div>
+      <div class="status-bar">
+        <span><span class="status-dot"></span>Live</span>
+        <span id="last-refresh">Last refresh: —</span>
+      </div>
+    </header>
+
+    <div id="content">
+      <div class="loading">Loading brief</div>
+    </div>
+
+    <footer>
+      Generated by <span class="brand">Rusty</span> · Andy's Market Brief
+    </footer>
+  </div>
+
+  <script>
+    let lastData = null;
+
+    function formatTime(iso) {
+      const d = new Date(iso);
+      return d.toLocaleString('en-US', {
+        weekday: 'short',
+        month: 'short',
+        day: 'numeric',
+        year: 'numeric',
+        hour: 'numeric',
+        minute: '2-digit',
+        timeZoneName: 'short'
+      });
+    }
+
+    function renderBrief(data) {
+      const el = document.getElementById('content');
+      document.getElementById('gen-time').textContent = formatTime(data.generated_at);
+
+      let html = '';
+
+      // Macro
+      html += `
+        <div class="section">
+          <div class="section-title">🌍 Macro Summary</div>
+          <div class="macro-headline">${esc(data.macro.headline)}</div>
+          <ul class="macro-bullets">
+            ${data.macro.bullets.map(b => `<li>${esc(b)}</li>`).join('')}
+          </ul>
+        </div>`;
+
+      // Watchlist
+      html += `
+        <div class="section">
+          <div class="section-title">📊 Watchlist</div>
+          <div class="watchlist-grid">
+            ${data.watchlist.map(w => {
+              const cls = w.change_pct >= 0 ? 'positive' : 'negative';
+              const sign = w.change_pct >= 0 ? '+' : '';
+              return `
+                <div class="watch-card">
+                  <div class="watch-card-header">
+                    <span class="watch-ticker">${esc(w.ticker)}</span>
+                    <span class="watch-signal">${w.signal}</span>
+                  </div>
+                  <div class="watch-price">$${w.price.toFixed(2)}</div>
+                  <div class="watch-change ${cls}">${sign}${w.change_pct.toFixed(2)}%</div>
+                  <div class="watch-note">${esc(w.note)}</div>
+                </div>`;
+            }).join('')}
+          </div>
+        </div>`;
+
+      // EV/AV
+      html += `
+        <div class="section">
+          <div class="section-title">🚗 EV / AV Sector</div>
+          <ul class="ev-list">
+            ${data.ev_av.map(b => `<li>${esc(b)}</li>`).join('')}
+          </ul>
+        </div>`;
+
+      // Opportunity
+      html += `
+        <div class="section">
+          <div class="section-title">🔍 Opportunity Spotlight</div>
+          ${data.opportunity.map(o => `
+            <div class="opp-card">
+              <div class="opp-title">${esc(o.title)}</div>
+              <div class="opp-body">${esc(o.body)}</div>
+            </div>`).join('')}
+        </div>`;
+
+      // Trade Setups
+      html += `
+        <div class="section">
+          <div class="section-title">⚡ Trade Setups</div>
+          <table class="trade-table">
+            <thead>
+              <tr><th>Ticker</th><th>Signal</th><th>Action</th></tr>
+            </thead>
+            <tbody>
+              ${data.trade_setups.map(t => `
+                <tr>
+                  <td class="ticker-col">${esc(t.ticker)}</td>
+                  <td class="signal-col">${esc(t.signal)}</td>
+                  <td>${esc(t.action)}</td>
+                </tr>`).join('')}
+            </tbody>
+          </table>
+        </div>`;
+
+      el.innerHTML = html;
+    }
+
+    function esc(str) {
+      const d = document.createElement('div');
+      d.textContent = str;
+      return d.innerHTML;
+    }
+
+    async function fetchBrief() {
+      try {
+        const resp = await fetch('brief.json?t=' + Date.now());
+        if (!resp.ok) return;
+        const data = await resp.json();
+        const raw = JSON.stringify(data);
+        if (raw !== lastData) {
+          lastData = raw;
+          renderBrief(data);
+        }
+        document.getElementById('last-refresh').textContent =
+          'Last refresh: ' + new Date().toLocaleTimeString();
+      } catch (e) {
+        console.error('Fetch failed:', e);
+      }
+    }
+
+    fetchBrief();
+    setInterval(fetchBrief, 60000);
+  </script>
+</body>
+</html>
