@@ -3,436 +3,538 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Andy's Market Brief</title>
+  <title>Andy's Daily Intelligence Brief</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
       --bg: #0d1117;
       --surface: #161b22;
-      --border: #30363d;
+      --border: #21262d;
       --text: #e6edf3;
       --text-dim: #8b949e;
+      --text-faint: #484f58;
       --green: #3fb950;
       --red: #f85149;
       --yellow: #d29922;
       --blue: #58a6ff;
+      --purple: #bc8cff;
+      --orange: #f0883e;
+      --cyan: #39d353;
       --accent: #1f6feb;
+      --callout-bg: #1c2333;
+      --callout-border: #2d5a88;
     }
 
     body {
-      font-family: 'SF Mono', 'Cascadia Code', 'Fira Code', 'Consolas', monospace;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif;
       background: var(--bg);
       color: var(--text);
-      line-height: 1.6;
+      line-height: 1.7;
       min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
     }
 
     .container {
-      max-width: 960px;
+      max-width: 800px;
       margin: 0 auto;
-      padding: 24px 16px;
+      padding: 32px 20px;
     }
 
     header {
-      text-align: center;
-      padding: 32px 0 24px;
+      padding: 40px 0 32px;
       border-bottom: 1px solid var(--border);
-      margin-bottom: 32px;
+      margin-bottom: 40px;
     }
 
     header h1 {
-      font-size: 1.8rem;
-      font-weight: 700;
+      font-size: 2rem;
+      font-weight: 800;
       letter-spacing: -0.5px;
       margin-bottom: 8px;
     }
 
+    .subtitle {
+      font-size: 0.95rem;
+      color: var(--text-dim);
+    }
+
     .timestamp {
       font-size: 0.85rem;
-      color: var(--text-dim);
+      color: var(--text-faint);
+      margin-top: 8px;
     }
 
-    .timestamp .time {
-      color: var(--blue);
-      font-weight: 600;
-    }
-
-    .status-bar {
-      display: flex;
-      justify-content: center;
-      gap: 16px;
-      margin-top: 12px;
-      font-size: 0.75rem;
-      color: var(--text-dim);
-    }
-
-    .status-dot {
-      display: inline-block;
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--green);
-      margin-right: 4px;
-      animation: pulse 2s infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.4; }
-    }
-
+    /* Section styles */
     .section {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 24px;
+      margin-bottom: 48px;
+    }
+
+    .section-header {
+      font-size: 1.35rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+      letter-spacing: -0.3px;
+    }
+
+    .section-headline {
+      font-size: 1rem;
+      color: var(--yellow);
+      font-weight: 600;
       margin-bottom: 20px;
     }
 
-    .section-title {
-      font-size: 1.1rem;
-      font-weight: 700;
-      margin-bottom: 16px;
-      padding-bottom: 8px;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .macro-headline {
-      font-size: 1.05rem;
-      font-weight: 600;
-      color: var(--yellow);
+    /* Cards */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px;
       margin-bottom: 12px;
     }
 
-    .macro-bullets {
-      list-style: none;
-      padding: 0;
+    .card-title {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
     }
 
-    .macro-bullets li {
-      padding: 8px 0 8px 20px;
-      position: relative;
-      font-size: 0.88rem;
-      color: var(--text-dim);
-      border-bottom: 1px solid var(--border);
+    .card-title a {
+      color: var(--text);
+      text-decoration: none;
     }
 
-    .macro-bullets li:last-child { border-bottom: none; }
-
-    .macro-bullets li::before {
-      content: '>';
-      position: absolute;
-      left: 0;
+    .card-title a:hover {
       color: var(--blue);
+    }
+
+    .card-body {
+      font-size: 0.92rem;
+      color: var(--text-dim);
+      line-height: 1.7;
+    }
+
+    .card-tip {
+      margin-top: 10px;
+      font-size: 0.85rem;
+      color: var(--cyan);
+      font-weight: 500;
+    }
+
+    .card-tip::before {
+      content: '> ';
       font-weight: 700;
     }
 
-    /* Watchlist grid */
-    .watchlist-grid {
+    /* Tags / badges */
+    .tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 2px 8px;
+      border-radius: 12px;
+      flex-shrink: 0;
+    }
+
+    .tag-model { background: #1c3a5f; color: var(--blue); }
+    .tag-paper { background: #2d1f4e; color: var(--purple); }
+    .tag-china { background: #4a1d1d; color: var(--red); }
+    .tag-xai { background: #3d2a10; color: var(--orange); }
+
+    /* Callout boxes */
+    .callout {
+      background: var(--callout-bg);
+      border: 1px solid var(--callout-border);
+      border-left: 4px solid var(--blue);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-top: 20px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      line-height: 1.6;
+    }
+
+    .callout-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--blue);
+      margin-bottom: 4px;
+      font-weight: 700;
+    }
+
+    /* Tesla / SpaceX / xAI compact row */
+    .trio-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      grid-template-columns: repeat(3, 1fr);
       gap: 12px;
     }
 
-    .watch-card {
-      background: var(--bg);
+    .trio-card {
+      background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: 6px;
-      padding: 16px;
-      transition: border-color 0.2s;
+      border-radius: 10px;
+      padding: 18px;
     }
 
-    .watch-card:hover {
-      border-color: var(--blue);
-    }
-
-    .watch-card-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 8px;
-    }
-
-    .watch-ticker {
-      font-size: 1.1rem;
+    .trio-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-faint);
+      margin-bottom: 6px;
       font-weight: 700;
     }
 
-    .watch-signal {
-      font-size: 1.2rem;
-    }
-
-    .watch-price {
+    .trio-price {
       font-size: 1.3rem;
-      font-weight: 700;
-      margin-bottom: 4px;
+      font-weight: 800;
+      margin-bottom: 2px;
     }
 
-    .watch-change {
+    .trio-change {
       font-size: 0.85rem;
       font-weight: 600;
       margin-bottom: 8px;
     }
 
-    .watch-change.positive { color: var(--green); }
-    .watch-change.negative { color: var(--red); }
+    .trio-change.positive { color: var(--green); }
+    .trio-change.negative { color: var(--red); }
 
-    .watch-note {
-      font-size: 0.78rem;
+    .trio-note {
+      font-size: 0.82rem;
       color: var(--text-dim);
       line-height: 1.5;
     }
 
-    /* EV/AV bullets */
-    .ev-list {
-      list-style: none;
-      padding: 0;
+    /* Movie cards */
+    .movie-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
     }
 
-    .ev-list li {
-      padding: 10px 0 10px 24px;
-      position: relative;
-      font-size: 0.85rem;
-      color: var(--text-dim);
-      border-bottom: 1px solid var(--border);
+    .verdict {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 3px 10px;
+      border-radius: 12px;
+      flex-shrink: 0;
+      width: 52px;
+      text-align: center;
     }
 
-    .ev-list li:last-child { border-bottom: none; }
+    .verdict-watch { background: #1a3a1a; color: var(--green); }
+    .verdict-skip { background: #3a1a1a; color: var(--red); }
+    .verdict-wait { background: #3a2e10; color: var(--yellow); }
 
-    .ev-list li::before {
-      content: '\26A1';
-      position: absolute;
-      left: 0;
-    }
+    .movie-info { flex: 1; }
 
-    /* Opportunity cards */
-    .opp-card {
-      background: var(--bg);
-      border: 1px solid var(--accent);
-      border-radius: 6px;
-      padding: 16px;
-      margin-bottom: 12px;
-    }
-
-    .opp-card:last-child { margin-bottom: 0; }
-
-    .opp-title {
+    .movie-title {
       font-weight: 700;
-      color: var(--blue);
-      margin-bottom: 8px;
       font-size: 0.95rem;
     }
 
-    .opp-body {
-      font-size: 0.83rem;
-      color: var(--text-dim);
-      line-height: 1.6;
+    .movie-platform {
+      font-size: 0.78rem;
+      color: var(--text-faint);
+      margin-left: 8px;
     }
 
-    /* Trade setups table */
-    .trade-table {
-      width: 100%;
-      border-collapse: collapse;
+    .movie-note {
       font-size: 0.85rem;
+      color: var(--text-dim);
+      margin-top: 2px;
     }
 
-    .trade-table th {
-      text-align: left;
-      padding: 10px 12px;
-      border-bottom: 2px solid var(--border);
-      color: var(--text-dim);
-      font-size: 0.75rem;
+    /* Marketing tool badge */
+    .tool-badge {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--orange);
+      background: #3d2a10;
+      padding: 2px 8px;
+      border-radius: 12px;
+      margin-top: 8px;
+    }
+
+    /* Macro section — compact */
+    .macro-section {
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+    }
+
+    .macro-header {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text-faint);
       text-transform: uppercase;
       letter-spacing: 0.5px;
+      margin-bottom: 12px;
     }
 
-    .trade-table td {
-      padding: 10px 12px;
-      border-bottom: 1px solid var(--border);
+    .macro-row {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+      font-size: 0.85rem;
+      margin-bottom: 8px;
     }
 
-    .trade-table tr:last-child td { border-bottom: none; }
+    .macro-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
 
-    .trade-table .ticker-col {
+    .macro-ticker {
+      color: var(--text-faint);
+      font-weight: 600;
+    }
+
+    .macro-price {
       font-weight: 700;
-      color: var(--blue);
     }
 
-    .trade-table .signal-col {
-      color: var(--yellow);
+    .macro-change {
+      font-weight: 600;
+      font-size: 0.8rem;
+    }
+
+    .positive { color: var(--green); }
+    .negative { color: var(--red); }
+
+    .macro-mood {
+      font-size: 0.85rem;
+      color: var(--text-dim);
+      margin-top: 8px;
+      font-style: italic;
+    }
+
+    .macro-friday {
+      font-size: 0.85rem;
+      color: var(--orange);
+      margin-top: 6px;
+      font-weight: 600;
     }
 
     /* Footer */
     footer {
       text-align: center;
-      padding: 32px 0 24px;
-      color: var(--text-dim);
-      font-size: 0.75rem;
-      border-top: 1px solid var(--border);
-      margin-top: 12px;
+      padding: 40px 0 24px;
+      color: var(--text-faint);
+      font-size: 0.8rem;
     }
 
-    footer .brand {
-      font-weight: 700;
-      color: var(--text);
-    }
-
-    /* Loading state */
+    /* Loading */
     .loading {
       text-align: center;
-      padding: 48px;
+      padding: 80px 0;
       color: var(--text-dim);
+      font-size: 1.1rem;
     }
 
     .loading::after {
       content: '';
       display: inline-block;
-      width: 16px;
-      height: 16px;
+      width: 14px;
+      height: 14px;
       border: 2px solid var(--border);
       border-top-color: var(--blue);
       border-radius: 50%;
       animation: spin 0.8s linear infinite;
-      margin-left: 8px;
+      margin-left: 10px;
       vertical-align: middle;
     }
 
-    @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
+    @keyframes spin { to { transform: rotate(360deg); } }
 
-    @media (max-width: 600px) {
-      .container { padding: 16px 12px; }
-      header h1 { font-size: 1.3rem; }
-      .section { padding: 16px; }
-      .watchlist-grid { grid-template-columns: 1fr; }
-      .watch-price { font-size: 1.1rem; }
+    @media (max-width: 640px) {
+      .container { padding: 20px 16px; }
+      header h1 { font-size: 1.5rem; }
+      .section-header { font-size: 1.15rem; }
+      .trio-grid { grid-template-columns: 1fr; }
+      .trio-price { font-size: 1.1rem; }
+      .movie-card { flex-direction: column; align-items: flex-start; gap: 8px; }
+      .macro-row { flex-direction: column; gap: 8px; }
     }
   </style>
 </head>
 <body>
   <div class="container">
     <header>
-      <h1>📡 Andy's Market Brief</h1>
-      <div class="timestamp">
-        Generated: <span class="time" id="gen-time">—</span>
-      </div>
-      <div class="status-bar">
-        <span><span class="status-dot"></span>Live</span>
-        <span id="last-refresh">Last refresh: —</span>
-      </div>
+      <h1>Andy's Daily Intelligence Brief</h1>
+      <div class="subtitle">AI research, agents, and things worth knowing</div>
+      <div class="timestamp" id="gen-time"></div>
     </header>
 
     <div id="content">
       <div class="loading">Loading brief</div>
     </div>
 
-    <footer>
-      Generated by <span class="brand">Rusty</span> · Andy's Market Brief
-    </footer>
+    <footer>Generated by Rusty</footer>
   </div>
 
   <script>
-    let lastData = null;
+    let lastGeneratedAt = null;
+
+    function esc(str) {
+      if (!str) return '';
+      const d = document.createElement('div');
+      d.textContent = str;
+      return d.innerHTML;
+    }
 
     function formatTime(iso) {
       const d = new Date(iso);
       return d.toLocaleString('en-US', {
-        weekday: 'short',
-        month: 'short',
-        day: 'numeric',
-        year: 'numeric',
-        hour: 'numeric',
-        minute: '2-digit',
-        timeZoneName: 'short'
+        weekday: 'long', month: 'long', day: 'numeric', year: 'numeric',
+        hour: 'numeric', minute: '2-digit', timeZoneName: 'short'
       });
     }
 
-    function renderBrief(data) {
-      const el = document.getElementById('content');
-      document.getElementById('gen-time').textContent = formatTime(data.generated_at);
-
-      let html = '';
-
-      // Macro
-      html += `
-        <div class="section">
-          <div class="section-title">🌍 Macro Summary</div>
-          <div class="macro-headline">${esc(data.macro.headline)}</div>
-          <ul class="macro-bullets">
-            ${data.macro.bullets.map(b => `<li>${esc(b)}</li>`).join('')}
-          </ul>
-        </div>`;
-
-      // Watchlist
-      html += `
-        <div class="section">
-          <div class="section-title">📊 Watchlist</div>
-          <div class="watchlist-grid">
-            ${data.watchlist.map(w => {
-              const cls = w.change_pct >= 0 ? 'positive' : 'negative';
-              const sign = w.change_pct >= 0 ? '+' : '';
-              return `
-                <div class="watch-card">
-                  <div class="watch-card-header">
-                    <span class="watch-ticker">${esc(w.ticker)}</span>
-                    <span class="watch-signal">${w.signal}</span>
-                  </div>
-                  <div class="watch-price">$${w.price.toFixed(2)}</div>
-                  <div class="watch-change ${cls}">${sign}${w.change_pct.toFixed(2)}%</div>
-                  <div class="watch-note">${esc(w.note)}</div>
-                </div>`;
-            }).join('')}
-          </div>
-        </div>`;
-
-      // EV/AV
-      html += `
-        <div class="section">
-          <div class="section-title">🚗 EV / AV Sector</div>
-          <ul class="ev-list">
-            ${data.ev_av.map(b => `<li>${esc(b)}</li>`).join('')}
-          </ul>
-        </div>`;
-
-      // Opportunity
-      html += `
-        <div class="section">
-          <div class="section-title">🔍 Opportunity Spotlight</div>
-          ${data.opportunity.map(o => `
-            <div class="opp-card">
-              <div class="opp-title">${esc(o.title)}</div>
-              <div class="opp-body">${esc(o.body)}</div>
-            </div>`).join('')}
-        </div>`;
-
-      // Trade Setups
-      html += `
-        <div class="section">
-          <div class="section-title">⚡ Trade Setups</div>
-          <table class="trade-table">
-            <thead>
-              <tr><th>Ticker</th><th>Signal</th><th>Action</th></tr>
-            </thead>
-            <tbody>
-              ${data.trade_setups.map(t => `
-                <tr>
-                  <td class="ticker-col">${esc(t.ticker)}</td>
-                  <td class="signal-col">${esc(t.signal)}</td>
-                  <td>${esc(t.action)}</td>
-                </tr>`).join('')}
-            </tbody>
-          </table>
-        </div>`;
-
-      el.innerHTML = html;
+    function changeCls(pct) {
+      return pct >= 0 ? 'positive' : 'negative';
     }
 
-    function esc(str) {
-      const d = document.createElement('div');
-      d.textContent = str;
-      return d.innerHTML;
+    function changeStr(pct) {
+      return (pct >= 0 ? '+' : '') + pct.toFixed(2) + '%';
+    }
+
+    function tagHtml(tag) {
+      if (!tag) return '';
+      const cls = 'tag-' + tag;
+      return `<span class="tag ${cls}">${esc(tag)}</span>`;
+    }
+
+    function renderBrief(data) {
+      document.getElementById('gen-time').textContent = formatTime(data.generated_at);
+      let html = '';
+
+      // 1. AI Research & Models
+      const ai = data.ai_research;
+      html += `<div class="section">
+        <div class="section-header">&#129302; AI Research &amp; Models</div>
+        <div class="section-headline">${esc(ai.headline)}</div>`;
+      (ai.items || []).forEach(item => {
+        const titleContent = item.learn_url
+          ? `<a href="${esc(item.learn_url)}" target="_blank" rel="noopener">${esc(item.title)}</a>`
+          : esc(item.title);
+        html += `<div class="card">
+          <div class="card-title">${titleContent} ${tagHtml(item.tag)}</div>
+          <div class="card-body">${esc(item.body)}</div>
+        </div>`;
+      });
+      if (ai.learn_today) {
+        html += `<div class="callout">
+          <div class="callout-label">Learn Today</div>
+          ${esc(ai.learn_today)}
+        </div>`;
+      }
+      html += `</div>`;
+
+      // 2. OpenClaw & AI Agents
+      const oc = data.openclaw_agents;
+      html += `<div class="section">
+        <div class="section-header">&#129438; OpenClaw &amp; AI Agents</div>
+        <div class="section-headline">${esc(oc.headline)}</div>`;
+      (oc.items || []).forEach(item => {
+        html += `<div class="card">
+          <div class="card-title">${esc(item.title)}</div>
+          <div class="card-body">${esc(item.body)}</div>
+          ${item.try_this ? `<div class="card-tip">${esc(item.try_this)}</div>` : ''}
+        </div>`;
+      });
+      if (oc.try_today) {
+        html += `<div class="callout">
+          <div class="callout-label">Try Today</div>
+          ${esc(oc.try_today)}
+        </div>`;
+      }
+      html += `</div>`;
+
+      // 3. Tesla / SpaceX / xAI
+      const tsx = data.tesla_spacex_xai;
+      html += `<div class="section">
+        <div class="section-header">&#128640; Tesla / SpaceX / xAI</div>
+        <div class="trio-grid">
+          <div class="trio-card">
+            <div class="trio-label">Tesla</div>
+            <div class="trio-price">$${tsx.tesla.price.toFixed(2)}</div>
+            <div class="trio-change ${changeCls(tsx.tesla.change_pct)}">${changeStr(tsx.tesla.change_pct)}</div>
+            <div class="trio-note">${esc(tsx.tesla.note)}</div>
+          </div>
+          <div class="trio-card">
+            <div class="trio-label">SpaceX</div>
+            <div class="trio-note" style="margin-top:8px">${esc(tsx.spacex)}</div>
+          </div>
+          <div class="trio-card">
+            <div class="trio-label">xAI</div>
+            <div class="trio-note" style="margin-top:8px">${esc(tsx.xai)}</div>
+          </div>
+        </div>
+      </div>`;
+
+      // 4. Movies & Streaming
+      const movies = data.movies;
+      html += `<div class="section">
+        <div class="section-header">&#127916; Movies &amp; Streaming</div>`;
+      (movies.items || []).forEach(m => {
+        const vcls = 'verdict-' + (m.verdict || 'wait');
+        html += `<div class="movie-card">
+          <span class="verdict ${vcls}">${esc(m.verdict)}</span>
+          <div class="movie-info">
+            <div><span class="movie-title">${esc(m.title)}</span><span class="movie-platform">${esc(m.platform)}</span></div>
+            <div class="movie-note">${esc(m.note)}</div>
+          </div>
+        </div>`;
+      });
+      html += `</div>`;
+
+      // 5. Marketing Automation
+      const mkt = data.marketing;
+      html += `<div class="section">
+        <div class="section-header">&#128227; Marketing Automation</div>`;
+      (mkt.items || []).forEach(item => {
+        html += `<div class="card">
+          <div class="card-title">${esc(item.title)}</div>
+          <div class="card-body">${esc(item.body)}</div>
+          ${item.tool ? `<span class="tool-badge">${esc(item.tool)}</span>` : ''}
+        </div>`;
+      });
+      html += `</div>`;
+
+      // 6. Macro / Markets / Crypto
+      const m = data.macro;
+      html += `<div class="macro-section">
+        <div class="macro-header">&#128201; Macro / Markets / Crypto</div>
+        <div class="macro-row">
+          <div class="macro-item"><span class="macro-ticker">SPY</span> <span class="macro-price">$${m.spy.price.toFixed(2)}</span> <span class="macro-change ${changeCls(m.spy.change_pct)}">${changeStr(m.spy.change_pct)}</span></div>
+          <div class="macro-item"><span class="macro-ticker">TSLA</span> <span class="macro-price">$${m.tsla.price.toFixed(2)}</span> <span class="macro-change ${changeCls(m.tsla.change_pct)}">${changeStr(m.tsla.change_pct)}</span></div>
+          <div class="macro-item"><span class="macro-ticker">LMND</span> <span class="macro-price">$${m.lmnd.price.toFixed(2)}</span> <span class="macro-change ${changeCls(m.lmnd.change_pct)}">${changeStr(m.lmnd.change_pct)}</span></div>
+          <div class="macro-item"><span class="macro-ticker">BTC</span> <span class="macro-price">$${m.btc.price.toLocaleString()}</span> <span class="macro-change ${changeCls(m.btc.change_pct)}">${changeStr(m.btc.change_pct)}</span></div>
+        </div>
+        <div class="macro-mood">${esc(m.mood)}</div>
+        ${m.btc_friday_note ? `<div class="macro-friday">&#8383; ${esc(m.btc_friday_note)}</div>` : ''}
+      </div>`;
+
+      document.getElementById('content').innerHTML = html;
     }
 
     async function fetchBrief() {
@@ -440,20 +542,17 @@
         const resp = await fetch('brief.json?t=' + Date.now());
         if (!resp.ok) return;
         const data = await resp.json();
-        const raw = JSON.stringify(data);
-        if (raw !== lastData) {
-          lastData = raw;
+        if (data.generated_at !== lastGeneratedAt) {
+          lastGeneratedAt = data.generated_at;
           renderBrief(data);
         }
-        document.getElementById('last-refresh').textContent =
-          'Last refresh: ' + new Date().toLocaleTimeString();
       } catch (e) {
         console.error('Fetch failed:', e);
       }
     }
 
     fetchBrief();
-    setInterval(fetchBrief, 60000);
+    setInterval(fetchBrief, 300000); // 5 minutes
   </script>
 </body>
 </html>
