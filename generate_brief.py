@@ -96,7 +96,7 @@ def call_grok(prompt: str) -> str:
         "max_tokens": 4000,
     }
 
-    resp = requests.post(XAI_BASE_URL, headers=headers, json=payload, timeout=60)
+    resp = requests.post(XAI_BASE_URL, headers=headers, json=payload, timeout=120)
     resp.raise_for_status()
     return resp.json()["choices"][0]["message"]["content"]
 
