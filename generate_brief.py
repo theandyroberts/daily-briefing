@@ -101,7 +101,7 @@ def call_grok(prompt: str) -> str:
     return resp.json()["choices"][0]["message"]["content"]
 
 
-def parse_json_response(raw: str) -> dict | None:
+def parse_json_response(raw: str):
     """Extract JSON from a Grok response, handling markdown fences."""
     if not raw:
         return None
