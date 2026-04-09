@@ -1,146 +1,109 @@
 {
-  "generated_at": "2026-04-09T07:33:00-04:00",
+  "generated_at": "2026-04-09T09:04:37.036817-04:00",
   "ai_research": {
-    "headline": "Alibaba Qwen 3.6-Plus targets agentic coding — Microsoft ships first in-house MAI model family",
+    "headline": "Agents are rewriting their own skills, Meta bought Manus AI for $2B, and 96% of enterprises now run agents",
     "items": [
       {
-        "title": "Alibaba Qwen 3.6-Plus — 1M Context, Built for Agents",
-        "body": "Alibaba released Qwen 3.6-Plus: text + agentic model with 1M token context, tuned for autonomous coding (frontend, repo-level engineering, terminal/GUI agents). Open access, ~$0.28/M tokens. Competing directly with Claude and GPT on code agent benchmarks at a fraction of the cost.",
-        "tag": "model",
-        "learn_url": "https://whatllm.org/blog/new-ai-models-april-2026"
+        "title": "Memento-Skills: AI agents that rewrite their own code",
+        "body": "New framework lets agents rewrite and optimize their own skills via reinforcement learning \u2014 boosting task success from 50% to 80% without full retraining. This is a real capability leap, not hype.",
+        "tag": "paper",
+        "learn_url": "https://venturebeat.com/orchestration/new-framework-lets-ai-agents-rewrite-their-own-skills-without-retraining-the"
       },
       {
-        "title": "Microsoft MAI Models — First In-House Foundation Models",
-        "body": "Microsoft shipped three in-house models via Azure AI Foundry: MAI-Transcribe-1 (fast multilingual speech-to-text), MAI-Voice-1 (custom voice generation), and MAI-Image-2 (image and video generation). Microsoft is reducing dependence on OpenAI with its own model stack.",
+        "title": "Meta bought Manus AI for $2B",
+        "body": "Meta acquired Manus AI \u2014 the autonomous agent startup \u2014 for $2B this week. Paired with the Muse Spark model launch. Meta is going all-in on agents that handle real workflows, not chatbots.",
         "tag": "model",
-        "learn_url": "https://techcrunch.com/2026/04/02/microsoft-takes-on-ai-rivals-with-three-new-foundational-models"
+        "learn_url": "https://finance.yahoo.com/video/meta-launches-muse-spark-ai-bofa-raises-2026-chip-forecast-to-13t-180549134.html"
       },
       {
-        "title": "Zhipu GLM-5.1 — 744B MoE, Beats Opus on SWE-Bench",
-        "body": "Zhipu AI dropped GLM-5.1: 744B parameter MoE (40B active), 200K context. Claims to beat Claude Opus 4.6 and GPT-5.4 on SWE-Bench Pro. Fully open (MIT), free self-host. This is the most capable open-weight coding model released to date.",
+        "title": "Google Gemma 4 \u2014 best open model for agents right now",
+        "body": "Gemma 4 (up to 31B params) is Apache 2.0, runs on edge devices, and benchmarks well for reasoning and multimodality. Top pick for OpenClaw agents where you want local inference.",
         "tag": "model",
-        "learn_url": "https://whatllm.org/blog/new-ai-models-april-2026"
+        "learn_url": "https://radicaldatascience.wordpress.com/2026/04/07/ai-news-briefs-bulletin-board-for-april-2026"
       },
       {
-        "title": "Open-Weight April — Google Gemma 4 + PrismML Bonsai",
-        "body": "Google Gemma 4 family (27B, 26B MoE, edge variants) launched April 1 under Apache 2.0. PrismML Bonsai 8B is a 1-bit quantized model (14x smaller) strong on chat. The open-weight ecosystem is exploding — April has been the biggest month for open releases in 2026.",
+        "title": "Best models for agents in April 2026",
+        "body": "Benchmarks this week: MiniMax M2.7 (self-improving), Qwen3.6-Plus (million-token context), GPT-5.4, Claude Opus 4.6, Gemini 3.1 Pro. Claude Opus 4.6 still tops for coding and agentic tasks.",
         "tag": "model",
-        "learn_url": "https://whatllm.org/blog/new-ai-models-april-2026"
+        "learn_url": "https://medium.com/gitconnected/the-5-best-models-to-use-with-ai-agents-in-april-2026-83c15b8faef2"
       }
     ],
-    "learn_today": "Read the Qwen 3.6-Plus release details — Alibaba is aggressively targeting the agentic coding space at ultra-low prices. If you're building agents, this model family deserves evaluation."
+    "learn_today": "Read the Memento-Skills VentureBeat piece \u2014 self-improving agents are closer than most people realize."
   },
   "openclaw_agents": {
-    "headline": "MCP + LangGraph dominate the agent stack — Claude 'Managed Agents' hits public beta",
+    "headline": "Anthropic launches Claude Managed Agents, Microsoft ships governance toolkit, Perplexity up 50% revenue from agent pivot",
     "items": [
       {
-        "title": "Claude 'Managed Agents' — Public Beta",
-        "body": "Anthropic launched Managed Agents in public beta: a production-ready harness for deploying scalable agents. Slashes prototype-to-prod time to days. Includes built-in guardrails, tool access, and conversation management. Now available for Claude API users.",
-        "try_this": "Check Anthropic's docs if you're deploying agents on Claude — Managed Agents replaces custom scaffolding."
+        "title": "Anthropic Claude Managed Agents \u2014 now live",
+        "body": "Anthropic launched a managed product for enterprise agent deployment \u2014 handles orchestration and integration for you via API. Lower barrier for building complex multi-step agents. This is their direct answer to the OpenClaw market.",
+        "try_this": "Check if Claude Managed Agents API fits any of your current multi-step workflows better than hand-rolled orchestration.",
+        "learn_url": "https://www.wired.com/story/anthropic-launches-claude-managed-agents"
       },
       {
-        "title": "MCP + LangGraph = The 2026 Agent Stack",
-        "body": "DZone published a detailed guide on MCP + LangGraph as the dominant production agent pattern. LangGraph #1 in 2026 framework rankings (27K monthly searches). MCP protocol now supported in 12+ frameworks. LangChain reports 57% org adoption of agent frameworks (up from 51%). The paradigm has shifted from RAG to agentic workflows.",
-        "try_this": "If you're building agents, start with LangGraph + MCP. Pick one manual task and wrap it as an MCP server this week."
+        "title": "Microsoft Agent Governance Toolkit \u2014 open source",
+        "body": "Microsoft shipped an open-source toolkit targeting OWASP's top AI agent risks. Monitors and controls agents during execution. Relevant as 94% of enterprises now report agent sprawl issues.",
+        "try_this": "Worth scanning the OWASP AI agent risks list \u2014 some apply to OpenClaw setups too.",
+        "learn_url": "https://www.infoworld.com/article/4155591/microsofts-new-agent-governance-toolkit-targets-top-owasp-risks-for-ai-agents.html"
       },
       {
-        "title": "Agentic Frameworks Up 340% YoY on X",
-        "body": "X discussions show agentic frameworks (LangChain, CrewAI, AutoGen) up 340% year-over-year. A 25K-task study found self-organizing agents (no roles/hierarchy) beat structured frameworks by 14%. The agent economy is accelerating: VISA launched 'Intelligent Commerce Connect' for agent payments, Microsoft shipped APM (Agent Package Manager).",
-        "try_this": "Watch for the VISA agent payments integration — autonomous shopping agents are becoming real."
-      },
-      {
-        "title": "Security Alert: Autonomous Agents = New Attack Surface",
-        "body": "CrowdStrike warns that autonomous agents make endpoints the new security control plane. As agents gain tool access and autonomy, security models must evolve. Agent-to-agent trust, sandboxing, and audit trails are becoming critical.",
-        "try_this": "Audit your agent's tool permissions — least privilege applies to AI agents just like human users."
+        "title": "Perplexity revenue up 50% after pivoting to agents",
+        "body": "Perplexity shifted from search to full AI agents and saw a 50% revenue surge. The lesson: agent-first positioning is monetizing faster than search/chat positioning.",
+        "learn_url": "https://www.pymnts.com/artificial-intelligence-2/2026/perplexitys-shift-to-ai-agents-boosts-revenue-50"
       }
     ],
-    "try_today": "Evaluate LangGraph + MCP for your next agent build. If you're still using raw API calls without structured tool discovery, you're leaving reliability and scalability on the table."
+    "try_today": "Try swapping one Claude Haiku call in your agent stack with Gemma 4 locally \u2014 benchmark the quality difference for your specific use case."
   },
   "tesla_spacex_xai": {
     "tesla": {
-      "price": null,
-      "change_pct": null,
-      "note": "Stock data unavailable (yfinance API error). TSLA reportedly consolidating around $337 with limited downside to ~$320 and upside potential to $370-380. Key catalysts: Q1 earnings April 22, Cybercab production starting this month, FSD v14.3 reviews ongoing. China Q1 exports hit 100,600 (highest ever), Giga Shanghai March exports +529% YoY. Reuters reports a new smaller, cheaper electric SUV in early development. JPMorgan bearish note (potential 60% drop) drew pushback from Elon."
+      "price": 343.25,
+      "change_pct": -1.0,
+      "note": "Reuters scoop: Tesla quietly reaching out to suppliers about a NEW cheaper SUV model \u2014 not a Model Y variant, entirely new. Q1 earnings April 22. FSD v14.3 still rolling out. ~60 Cybercabs spotted at Giga Texas."
     },
-    "spacex": "SpaceX IPO speculation continues — potential $1.75-2T valuation with possible investor briefings this month (analyst day rumored April 21). No confirmed timeline. Tesla-SpaceX merger speculation persists but experts call concerns overblown. Bitget exchange teased a 'rocket' event for April 10. Terafab chip project with Tesla, xAI, and Intel progressing.",
-    "xai": "Grok continues integration into X platform: auto-translation for all posts worldwide and AI photo editor in iOS app. No new model release — xAI focusing on platform integrations and real-world deployment over new model announcements."
+    "spacex": "Tied up in xAI reorg news \u2014 SpaceX SVP Michael Nicolls named xAI president. SpaceX IPO buzz growing alongside the leadership shuffle.",
+    "xai": "Internal memo: xAI reorganizing engineering team, Nicolls (SpaceX SVP) named president and acknowledged xAI is 'clearly behind.' X rolling out Grok-powered auto-translation and AI photo editor globally."
   },
   "movies": {
     "items": [
       {
-        "title": "The Super Mario Galaxy Movie",
-        "platform": "Theaters",
-        "verdict": "watch",
-        "note": "Opened April 1 — 89% audience score, still drawing crowds. The Mario franchise keeps delivering."
-      },
-      {
-        "title": "Mermaid",
-        "platform": "Theaters",
-        "verdict": "watch",
-        "note": "Opened April 8 — 94% critics. Strong early reviews. Fresh pick for this week."
-      },
-      {
-        "title": "Exit 8",
-        "platform": "Theaters",
+        "title": "Check JustWatch this week",
+        "platform": "Various",
         "verdict": "wait",
-        "note": "Opens April 10 — 94% critics score already. Based on the viral indie game. Weekend material."
-      },
-      {
-        "title": "The Blue Trail",
-        "platform": "Theaters",
-        "verdict": "watch",
-        "note": "Opened April 3 — 100% critics, 93% audience. The best-reviewed film in theaters right now."
-      },
-      {
-        "title": "The Drama",
-        "platform": "Theaters",
-        "verdict": "watch",
-        "note": "Opened April 3 — 77% critics, 80% audience. Solid ensemble piece with good word of mouth."
+        "note": "Search timed out this morning. Check justwatch.com for what's new \u2014 will have picks here tomorrow."
       }
     ]
   },
   "marketing": {
     "items": [
       {
-        "title": "OpenAI Pivots Enterprise with 'Super App'",
-        "body": "OpenAI raised at $852B valuation and launched a unified 'super app' combining chat, coding, search, and agents. Retreating from consumer experiments to focus on enterprise automation.",
-        "tool": "openai.com"
+        "title": "Perplexity's agent pivot is the marketing playbook",
+        "body": "50% revenue jump from repositioning as agents vs. search. The lesson for QuizzyDots and InstaClaw: 'daily quiz game' is a category. 'AI-powered daily habit' is a positioning. Which do you want to own?",
+        "tool": "perplexity.ai"
       },
       {
-        "title": "HubSpot Breeze: Outcome-Based Agent Pricing (April 14)",
-        "body": "HubSpot switching Breeze AI agents to outcome-based pricing: $0.50/resolved convo, $1/qualified lead. No more flat subscription. Pay for results, not seats — this is where AI marketing pricing is headed.",
-        "tool": "hubspot.com"
-      },
-      {
-        "title": "Forbes: Off-the-Shelf AI Tools Are Commodity Now",
-        "body": "Off-the-shelf AI marketing tools no longer provide competitive advantage. Everyone has the same ChatGPT-powered copy tool. Edge comes from custom integrations and proprietary data. Build internal AI layers.",
-        "tool": "forbes.com"
-      },
-      {
-        "title": "Zapier's Updated AI Social Media Tools (April)",
-        "body": "Top picks: Buffer ($5/mo), Publer ($4/mo with brand voice AI), FeedHive (content recycling), Predis.ai (full post generation). Enterprise: Hootsuite, Sprout Social ($199/mo+). Integration-first for agentic workflows.",
-        "tool": "zapier.com"
+        "title": "94% of enterprises run agents \u2014 that's your audience for InstaClaw",
+        "body": "The average enterprise now runs 12 agents. They all have the same problem: governance, reliability, control. That's InstaClaw's pitch. The market is enormous and already bought in.",
+        "learn_url": "https://www.techinasia.com/news/ai-agents-surge-enterprises-94-flag-sprawl-risks-report"
       }
     ]
   },
   "macro": {
     "spy": {
-      "price": null,
-      "change_pct": null
+      "price": 676.01,
+      "change_pct": 0.35
     },
     "tsla": {
-      "price": null,
-      "change_pct": null
+      "price": 343.25,
+      "change_pct": -1.0
     },
     "lmnd": {
-      "price": null,
-      "change_pct": null
+      "price": 58.94,
+      "change_pct": -4.9
     },
     "btc": {
-      "price": 71132,
-      "change_pct": -0.62
+      "price": 71298,
+      "change_pct": -1.14
     },
-    "mood": "Stock data unavailable (yfinance API error). BTC holding $71K. Markets cautious ahead of Tesla Q1 earnings (April 22) and potential SpaceX IPO filings.",
+    "mood": "Quiet open. BTC holding $71K. TSLA flat ahead of April 22 earnings.",
     "btc_friday_note": ""
   }
 }
