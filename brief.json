@@ -1,129 +1,111 @@
 {
-  "generated_at": "2026-04-07T14:00:00-04:00",
-  "title": "Andy's Daily Intelligence Brief",
+  "generated_at": "2026-04-08T20:21:12.995428-04:00",
   "ai_research": {
-    "headline": "Claude 4.6 Opus drops with 1M context — agent builders, your move",
+    "headline": "Meta kills Llama brand, launches Muse Spark \u2014 Anthropic's secret model deemed too dangerous to release",
     "items": [
       {
-        "title": "Claude Opus 4.6 launches with 1M context window",
-        "body": "Anthropic shipped Opus 4.6 with a million-token context window and significantly improved agentic capabilities. This is the most capable coding and reasoning model available. If you're building agents on Claude, this changes what's possible with single-pass context.",
+        "title": "Meta Muse Spark \u2014 Goodbye Llama",
+        "body": "Meta's Superintelligence Labs (led by Alexandr Wang) dropped Muse Spark today \u2014 a ground-up overhaul replacing the Llama family. Described as 'small and fast by design,' it's live in Meta AI now. META stock up on the news.",
         "tag": "model",
-        "learn_url": "https://www.anthropic.com/news"
+        "learn_url": "https://techcrunch.com/2026/04/08/meta-debuts-the-muse-spark-model-in-a-ground-up-overhaul-of-its-ai"
       },
       {
-        "title": "DeepSeek-R2 rumors intensify",
-        "body": "Multiple sources suggest DeepSeek is preparing R2, their next reasoning model. Expected to match or beat o3 on math/code benchmarks at a fraction of the cost. China's open-weight strategy continues to pressure US labs on pricing.",
-        "tag": "china",
-        "learn_url": "https://scholar.google.com/scholar?q=DeepSeek+reasoning+model"
-      },
-      {
-        "title": "Google releases Gemini 2.5 Pro with native tool use",
-        "body": "Gemini 2.5 Pro now supports structured tool calling natively, catching up to Claude's tool use. The 1M context window and multimodal capabilities make it a serious contender for agent architectures.",
-        "tag": "model",
-        "learn_url": "https://blog.google/technology/ai/"
-      },
-      {
-        "title": "Auto-research agents paper from Stanford",
-        "body": "New Stanford paper demonstrates agents that can autonomously design and run ML experiments, iterating on hypotheses without human intervention. Early but compelling results for AI-driven R&D workflows.",
+        "title": "Anthropic Built 'Claude Mythos' \u2014 Then Locked It Away",
+        "body": "Anthropic developed a model internally called Mythos that was judged 'too powerful to safely release.' Cited risks: enabling hacks and weapons they couldn't anticipate. It exists, it works, and nobody outside Anthropic has touched it.",
         "tag": "paper",
-        "learn_url": "https://arxiv.org/list/cs.AI/recent"
+        "learn_url": "https://nypost.com/2026/04/08/business/anthropics-claude-mythos-model-sparks-fears-of-ai-doomsday-wave-of-devastating-hacks"
       },
       {
-        "title": "xAI opens Grok API to more developers",
-        "body": "xAI expanded Grok API access with new tiers and reduced pricing. Grok-3 now available with search grounding, making it viable for real-time information retrieval in agent pipelines.",
-        "tag": "xai",
-        "learn_url": "https://docs.x.ai/"
+        "title": "Google Gemma 4 Family \u2014 Early April",
+        "body": "Google dropped the Gemma 4 open model family in early April. Lightweight, open-weights, designed for on-device and edge deployment. Worth watching for agent use cases where you want local inference.",
+        "tag": "model",
+        "learn_url": "https://whatllm.org/blog/new-ai-models-april-2026"
       }
     ],
-    "learn_today": "Try Claude Opus 4.6's extended context — load an entire codebase into one prompt and see how it handles complex refactors."
+    "learn_today": "Read the Muse Spark TechCrunch piece \u2014 Meta's 'Superintelligence Labs' rebranding signals a serious new direction worth understanding."
   },
   "openclaw_agents": {
-    "headline": "MCP ecosystem exploding — 50+ new servers this week",
+    "headline": "Anthropic blocks OpenClaw from Claude Pro/Max \u2014 Microsoft Agent Framework v1.0 ships",
     "items": [
       {
-        "title": "MCP server registry hits 500+ integrations",
-        "body": "The Model Context Protocol ecosystem is growing fast. New servers for Slack, Linear, Notion, and dozens of developer tools shipped this week. The composability story is becoming real.",
-        "try_this": "Add an MCP server to your OpenClaw setup — try the GitHub or Linear integration for automated ticket triage."
+        "title": "Anthropic Cuts Off Third-Party Agent Access to Claude Pro/Max",
+        "body": "As of April 4, Anthropic revoked OpenClaw and similar tools from using Claude Pro/Max subscriptions \u2014 'capacity management.' You now need pay-as-you-go API billing. OpenClaw's creator (Peter Steinberger) is accusing Anthropic of copying features before the ban. He's since joined OpenAI.",
+        "try_this": "Check your OpenClaw API billing setup \u2014 if you're still on a Pro subscription path, migrate to API keys now."
       },
       {
-        "title": "Claude Code ships Agent SDK improvements",
-        "body": "Anthropic's Claude Code got multi-agent orchestration improvements. Sub-agents can now run in parallel with isolated worktrees, and the tool system supports deferred loading for better performance.",
-        "try_this": "Use Claude Code's Agent tool to parallelize independent research tasks in your workflows."
+        "title": "Microsoft Agent Framework v1.0 Shipped April 3",
+        "body": "AutoGen + Semantic Kernel merged into Microsoft Agent Framework v1.0. Full MCP support, A2A protocol, 7 model providers, Python + .NET. The AutoGen you knew is now this.",
+        "try_this": "If you've been using AutoGen, check the migration guide \u2014 v1.0 is a significant restructure."
       },
       {
-        "title": "LangGraph adds human-in-the-loop primitives",
-        "body": "LangGraph 0.4 shipped with first-class support for human approval steps, breakpoints, and state persistence. Makes it much easier to build agents that pause for human review on critical decisions.",
-        "try_this": ""
+        "title": "MCP Now Supported Across 12+ Frameworks",
+        "body": "Model Context Protocol hit 97M+ downloads. LangGraph, Claude SDK, OpenAI SDK, Microsoft Agent Framework all support it natively. MCP is the standard \u2014 if you're not building your agent tools as MCP servers, you're building proprietary dead ends.",
+        "try_this": "Pick one thing your agent does manually (web search, file access, API call) and wrap it as an MCP server this week."
       },
       {
-        "title": "Prompt caching now available on Claude API",
-        "body": "Anthropic's prompt caching can cut costs by 90% for repeated system prompts. If your agents use the same system prompt across many calls, this is free money.",
-        "try_this": "Enable prompt caching on your OpenClaw system prompts — check the Anthropic docs for cache_control blocks."
+        "title": "LangGraph Security Alert \u2014 Patch Now",
+        "body": "Critical vulnerabilities in LangChain/LangGraph from March 27 exposed files and secrets in production LLM apps. If you're running LangGraph in production, patch immediately.",
+        "try_this": "Run: pip install --upgrade langchain langgraph"
       }
     ],
-    "try_today": "Audit your agent's system prompts — are you using prompt caching? You could be saving 90% on repeated context."
+    "try_today": "Audit your OpenClaw API key setup \u2014 the Pro/Max subscription block means you need direct API billing to keep agents running."
   },
   "tesla_spacex_xai": {
     "tesla": {
-      "price": 240.37,
-      "change_pct": -3.59,
-      "note": "Robotaxi reveal timeline still Q3 — street wants more details on regulatory path"
+      "price": 343.25,
+      "change_pct": -5.09,
+      "note": "50K unsold Q1 vehicles piling up + JPM $145 PT still haunting. BUT: FSD v14.3 dropped today (rewritten AI compiler using MLIR), ~60 Cybercab units spotted at Giga Texas, and Tesla + SpaceX + xAI joined Intel in 'Terafab' AI chip project. Q1 earnings April 22."
     },
-    "spacex": "Starship Flight 8 targeting April — full stack reuse attempt",
-    "xai": "Grok-3 API pricing dropped 40% — xAI pushing for developer adoption"
+    "spacex": "Terafab chip initiative confirmed \u2014 Tesla, SpaceX, xAI, Intel collaborating on next-gen AI chips. Intel stock surged on the news.",
+    "xai": "X rolling out Grok-powered auto-translation for all posts worldwide + new AI photo editor in iOS app (natural language edits: 'turn this into a museum painting'). No new model release \u2014 focus is on integrations."
   },
   "movies": {
     "items": [
       {
-        "title": "Warfare",
-        "platform": "Theaters",
-        "verdict": "watch",
-        "note": "A24 war film shot in real-time — visceral and innovative filmmaking."
-      },
-      {
-        "title": "Black Mirror S7",
-        "platform": "Netflix",
-        "verdict": "watch",
-        "note": "New season drops this week. The AI episodes are actually good this time."
-      },
-      {
-        "title": "The Electric State",
-        "platform": "Netflix",
+        "title": "Check JustWatch this week",
+        "platform": "Various",
         "verdict": "wait",
-        "note": "Russo brothers + Millie Bobby Brown. Visually cool, story is mid."
-      },
-      {
-        "title": "Sinners",
-        "platform": "Theaters",
-        "verdict": "watch",
-        "note": "Ryan Coogler + Michael B. Jordan — genre mashup that actually works."
+        "note": "Movie search timed out \u2014 check JustWatch.com for what's new on Netflix/Apple TV+ this week. Will have this section populated tomorrow."
       }
     ]
   },
   "marketing": {
     "items": [
       {
-        "title": "TikTok AI video generator now in open beta",
-        "body": "TikTok's built-in AI video creation tool is available to all business accounts. Generate short-form video ads from text prompts. Early results show 2x engagement vs static ads for app installs.",
-        "tool": "TikTok Creative Center"
+        "title": "Gumloop \u2014 AI Agent Builder for Marketing Workflows",
+        "body": "No-code tool for building custom AI agent workflows: competitor scraping, data summarization, Slack alerts. Saves 6+ hours/week for growth teams. Worth a look for QuizzyDots acquisition automation.",
+        "tool": "gumloop.com"
       },
       {
-        "title": "Reddit conversation ads getting traction",
-        "body": "Reddit's conversation placement ads are showing strong results for app marketing. You can target specific subreddits and appear naturally in comment threads. CPIs running 40% below Meta for niche apps.",
-        "tool": "Reddit Ads"
+        "title": "Analyze AI \u2014 Track Your Visibility in ChatGPT/Perplexity",
+        "body": "New category of SEO tool: tracks whether your product shows up when people ask AI assistants about your category. In 2026, AI search is real traffic. QuizzyDots should be showing up when people ask 'what's a good daily quiz game.'",
+        "tool": "tryanalyze.ai"
       },
       {
-        "title": "Opus Clip 4.0 ships AI b-roll and auto-captions",
-        "body": "Opus Clip's latest update generates b-roll footage and styled captions automatically. One long video becomes 10 optimized clips for different platforms. Great for QuizzyDots content repurposing.",
-        "tool": "Opus Clip"
+        "title": "PhantomBuster for Community Growth",
+        "body": "Automates social scraping, follows, and outreach with CRM sync. Relevant for finding and engaging quiz/trivia communities on Reddit and Discord for QuizzyDots.",
+        "tool": "phantombuster.com"
       }
     ]
   },
   "macro": {
-    "spy": {"price": 505.28, "change_pct": -0.60},
-    "tsla": {"price": 240.37, "change_pct": -3.59},
-    "lmnd": {"price": 24.85, "change_pct": -2.10},
-    "btc": {"price": 83500, "change_pct": -1.80},
-    "mood": "Risk-off vibes — tariff anxiety dragging everything down, tech leading the sell-off."
+    "spy": {
+      "price": 676.01,
+      "change_pct": 0.35
+    },
+    "tsla": {
+      "price": 343.25,
+      "change_pct": -5.09
+    },
+    "lmnd": {
+      "price": 58.94,
+      "change_pct": -4.9
+    },
+    "btc": {
+      "price": 70985,
+      "change_pct": -1.43
+    },
+    "mood": "Markets quietly positive (SPY +0.35%) while TSLA and LMND both down ~5%. BTC holding $71K.",
+    "btc_friday_note": ""
   }
 }

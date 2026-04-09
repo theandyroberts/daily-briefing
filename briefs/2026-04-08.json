@@ -1,152 +1,111 @@
 {
-  "generated_at": "2026-04-08T11:21:56.635563-04:00",
-  "title": "Andy's Daily Intelligence Brief",
+  "generated_at": "2026-04-08T20:21:12.995428-04:00",
   "ai_research": {
-    "headline": "xAI Drops Grok-3 Preview, Shakes Up Model Race",
+    "headline": "Meta kills Llama brand, launches Muse Spark \u2014 Anthropic's secret model deemed too dangerous to release",
     "items": [
       {
-        "title": "xAI Unveils Grok-3 Early Access",
-        "body": "xAI announced a preview of Grok-3, boasting improved reasoning and a 128k token context window. Early benchmarks suggest it\u2019s neck-and-neck with GPT-4o on complex tasks. Builders are already testing it for agentic workflows.",
-        "tag": "xai",
-        "learn_url": "https://x.ai/blog/grok-3-preview"
-      },
-      {
-        "title": "DeepSeek-V3 Out of China",
-        "body": "DeepSeek released V3, a multimodal model excelling in vision-language tasks. It\u2019s reportedly outperforming Western models in specific benchmarks like math and code. Open-source availability makes it a must-try for agent experimentation.",
-        "tag": "china",
-        "learn_url": "https://www.deepseek.com/news/v3-release"
-      },
-      {
-        "title": "New Paper on Scalable Agent Architectures",
-        "body": "A fresh arXiv paper explores modular agent designs for scaling AI systems across domains. It proposes a framework for dynamic task allocation that could inspire OpenClaw\u2019s next MCP iteration. Heavy read but worth skimming for ideas.",
-        "tag": "paper",
-        "learn_url": "https://arxiv.org/abs/2604.01234"
-      },
-      {
-        "title": "Anthropic\u2019s Claude 3.7 Sonnet Update",
-        "body": "Anthropic rolled out a minor update to Claude 3.7 Sonnet, focusing on reduced latency for API calls. Devs report smoother integration in real-time agent setups. Test it if your OpenClaw bots are latency-sensitive.",
+        "title": "Meta Muse Spark \u2014 Goodbye Llama",
+        "body": "Meta's Superintelligence Labs (led by Alexandr Wang) dropped Muse Spark today \u2014 a ground-up overhaul replacing the Llama family. Described as 'small and fast by design,' it's live in Meta AI now. META stock up on the news.",
         "tag": "model",
-        "learn_url": "https://www.anthropic.com/news/claude-3-7-sonnet-update"
+        "learn_url": "https://techcrunch.com/2026/04/08/meta-debuts-the-muse-spark-model-in-a-ground-up-overhaul-of-its-ai"
       },
       {
-        "title": "Qwen 2.5 from Alibaba",
-        "body": "Alibaba\u2019s Qwen 2.5 dropped with enhanced multilingual capabilities and a focus on enterprise AI. It\u2019s a strong contender for localized agent builds, especially in Asian markets. Check the API docs for integration potential.",
-        "tag": "china",
-        "learn_url": "https://qwen.aliyun.com/en/news/qwen-2-5"
-      },
-      {
-        "title": "Breakthrough Paper on Energy-Efficient Training",
-        "body": "A new MIT paper details a method to cut AI training energy costs by 30% without sacrificing accuracy. Could influence how you think about sustainable agent scaling. Practical implications are a few years out but good to know.",
+        "title": "Anthropic Built 'Claude Mythos' \u2014 Then Locked It Away",
+        "body": "Anthropic developed a model internally called Mythos that was judged 'too powerful to safely release.' Cited risks: enabling hacks and weapons they couldn't anticipate. It exists, it works, and nobody outside Anthropic has touched it.",
         "tag": "paper",
-        "learn_url": "https://scholar.google.com/scholar?q=energy+efficient+ai+training+mit+2026"
+        "learn_url": "https://nypost.com/2026/04/08/business/anthropics-claude-mythos-model-sparks-fears-of-ai-doomsday-wave-of-devastating-hacks"
+      },
+      {
+        "title": "Google Gemma 4 Family \u2014 Early April",
+        "body": "Google dropped the Gemma 4 open model family in early April. Lightweight, open-weights, designed for on-device and edge deployment. Worth watching for agent use cases where you want local inference.",
+        "tag": "model",
+        "learn_url": "https://whatllm.org/blog/new-ai-models-april-2026"
       }
     ],
-    "learn_today": "Dive into Grok-3\u2019s API docs to see how its expanded context window can upgrade your agent\u2019s memory."
+    "learn_today": "Read the Muse Spark TechCrunch piece \u2014 Meta's 'Superintelligence Labs' rebranding signals a serious new direction worth understanding."
   },
   "openclaw_agents": {
-    "headline": "Claude API Latency Slashes, LangGraph Gets Smarter",
+    "headline": "Anthropic blocks OpenClaw from Claude Pro/Max \u2014 Microsoft Agent Framework v1.0 ships",
     "items": [
       {
-        "title": "Claude API Latency Drop",
-        "body": "Anthropic\u2019s latest update cuts Claude API response times by 15%, per dev reports. This could make real-time OpenClaw agents feel snappier, especially for chatbots. Test it with a high-volume workflow.",
-        "try_this": "Run a stress test on your most chatty agent with the updated Claude API."
+        "title": "Anthropic Cuts Off Third-Party Agent Access to Claude Pro/Max",
+        "body": "As of April 4, Anthropic revoked OpenClaw and similar tools from using Claude Pro/Max subscriptions \u2014 'capacity management.' You now need pay-as-you-go API billing. OpenClaw's creator (Peter Steinberger) is accusing Anthropic of copying features before the ban. He's since joined OpenAI.",
+        "try_this": "Check your OpenClaw API billing setup \u2014 if you're still on a Pro subscription path, migrate to API keys now."
       },
       {
-        "title": "LangGraph Adds Dynamic Routing",
-        "body": "LangGraph\u2019s new release includes dynamic routing for multi-agent systems, letting tasks bounce between specialized models. This could simplify complex MCP setups on OpenClaw. Worth a sandbox test.",
-        "try_this": "Spin up a LangGraph demo with two Claude models to split reasoning and creativity tasks."
+        "title": "Microsoft Agent Framework v1.0 Shipped April 3",
+        "body": "AutoGen + Semantic Kernel merged into Microsoft Agent Framework v1.0. Full MCP support, A2A protocol, 7 model providers, Python + .NET. The AutoGen you knew is now this.",
+        "try_this": "If you've been using AutoGen, check the migration guide \u2014 v1.0 is a significant restructure."
       },
       {
-        "title": "CrewAI\u2019s Collaboration Update",
-        "body": "CrewAI dropped a patch for better inter-agent collaboration, reducing redundant outputs. Early users say it cuts token waste by 20% in team setups. Could be a fit for your next OpenClaw prototype.",
-        "try_this": "Build a small CrewAI squad for a mock customer support flow and measure token efficiency."
+        "title": "MCP Now Supported Across 12+ Frameworks",
+        "body": "Model Context Protocol hit 97M+ downloads. LangGraph, Claude SDK, OpenAI SDK, Microsoft Agent Framework all support it natively. MCP is the standard \u2014 if you're not building your agent tools as MCP servers, you're building proprietary dead ends.",
+        "try_this": "Pick one thing your agent does manually (web search, file access, API call) and wrap it as an MCP server this week."
       },
       {
-        "title": "Prompt Engineering Hack: Chain-of-Density",
-        "body": "A viral thread on X highlights Chain-of-Density prompting for denser, info-packed outputs from LLMs. It\u2019s a tweak on summarization that could sharpen OpenClaw agent responses. Easy to implement in a day.",
-        "try_this": "Rewrite one agent\u2019s summary prompt using Chain-of-Density and compare outputs."
+        "title": "LangGraph Security Alert \u2014 Patch Now",
+        "body": "Critical vulnerabilities in LangChain/LangGraph from March 27 exposed files and secrets in production LLM apps. If you're running LangGraph in production, patch immediately.",
+        "try_this": "Run: pip install --upgrade langchain langgraph"
       }
     ],
-    "try_today": "Test Claude\u2019s latency update with a high-frequency OpenClaw agent to feel the speed bump."
+    "try_today": "Audit your OpenClaw API key setup \u2014 the Pro/Max subscription block means you need direct API billing to keep agents running."
   },
   "tesla_spacex_xai": {
     "tesla": {
-      "price": 346.73,
-      "change_pct": -4.13,
-      "note": "Robotaxi event rumors swirl as Elon teases a demo date, driving volatility."
+      "price": 343.25,
+      "change_pct": -5.09,
+      "note": "50K unsold Q1 vehicles piling up + JPM $145 PT still haunting. BUT: FSD v14.3 dropped today (rewritten AI compiler using MLIR), ~60 Cybercab units spotted at Giga Texas, and Tesla + SpaceX + xAI joined Intel in 'Terafab' AI chip project. Q1 earnings April 22."
     },
-    "spacex": "Starship test flight scheduled for next week, aiming for full reusability milestone.",
-    "xai": "Grok-3 preview dominates AI chatter, with API access rolling out to select devs."
+    "spacex": "Terafab chip initiative confirmed \u2014 Tesla, SpaceX, xAI, Intel collaborating on next-gen AI chips. Intel stock surged on the news.",
+    "xai": "X rolling out Grok-powered auto-translation for all posts worldwide + new AI photo editor in iOS app (natural language edits: 'turn this into a museum painting'). No new model release \u2014 focus is on integrations."
   },
   "movies": {
     "items": [
       {
-        "title": "Cyberstorm 2049",
-        "platform": "Theaters",
-        "verdict": "watch",
-        "note": "A visually stunning sci-fi thriller with AI themes\u2014perfect for your builder brain."
-      },
-      {
-        "title": "The Last Algorithm",
-        "platform": "Netflix",
+        "title": "Check JustWatch this week",
+        "platform": "Various",
         "verdict": "wait",
-        "note": "AI-centric plot sounds cool but early reviews say it\u2019s predictable."
-      },
-      {
-        "title": "Retro Hackers",
-        "platform": "Hulu",
-        "verdict": "skip",
-        "note": "Tries to be nostalgic but lands as a tech clich\u00e9 mess."
-      },
-      {
-        "title": "Quantum Drift",
-        "platform": "Amazon Prime",
-        "verdict": "watch",
-        "note": "Mind-bending plot with solid acting\u2014stream it this weekend."
+        "note": "Movie search timed out \u2014 check JustWatch.com for what's new on Netflix/Apple TV+ this week. Will have this section populated tomorrow."
       }
     ]
   },
   "marketing": {
     "items": [
       {
-        "title": "AI TikTok Caption Generator",
-        "body": "A new tool uses LLMs to craft viral TikTok captions tailored to trending audio. Users report 25% higher engagement for app promo clips. Perfect for pushing quiz games to Gen Z.",
-        "tool": "TikViral"
+        "title": "Gumloop \u2014 AI Agent Builder for Marketing Workflows",
+        "body": "No-code tool for building custom AI agent workflows: competitor scraping, data summarization, Slack alerts. Saves 6+ hours/week for growth teams. Worth a look for QuizzyDots acquisition automation.",
+        "tool": "gumloop.com"
       },
       {
-        "title": "Instagram Story Automation",
-        "body": "An AI suite for Instagram Stories can now auto-generate polls and quizzes from app screenshots. It\u2019s a low-effort way to drive clicks for mobile games. Early adopters are seeing solid conversion bumps.",
-        "tool": "StoryBot"
+        "title": "Analyze AI \u2014 Track Your Visibility in ChatGPT/Perplexity",
+        "body": "New category of SEO tool: tracks whether your product shows up when people ask AI assistants about your category. In 2026, AI search is real traffic. QuizzyDots should be showing up when people ask 'what's a good daily quiz game.'",
+        "tool": "tryanalyze.ai"
       },
       {
-        "title": "Reddit Sentiment Analyzer",
-        "body": "A fresh AI script scans Reddit threads for sentiment on app niches like gaming. Use it to spot pain points for quiz app updates or marketing angles. Takes an hour to set up with basic API skills.",
-        "tool": "RedSentiment"
-      },
-      {
-        "title": "Personalized Email Flows with AI",
-        "body": "An AI email tool now integrates with game app data to send hyper-personalized retention emails. Think \u2018missed your daily quiz\u2019 nudges with dynamic content. Could lift re-engagement for OpenClaw-built apps.",
-        "tool": "MailMind"
+        "title": "PhantomBuster for Community Growth",
+        "body": "Automates social scraping, follows, and outreach with CRM sync. Relevant for finding and engaging quiz/trivia communities on Reddit and Discord for QuizzyDots.",
+        "tool": "phantombuster.com"
       }
     ]
   },
   "macro": {
     "spy": {
-      "price": 673.28,
-      "change_pct": -0.05
+      "price": 676.01,
+      "change_pct": 0.35
     },
     "tsla": {
-      "price": 346.73,
-      "change_pct": -4.13
+      "price": 343.25,
+      "change_pct": -5.09
     },
     "lmnd": {
-      "price": 60.2,
-      "change_pct": -2.87
+      "price": 58.94,
+      "change_pct": -4.9
     },
     "btc": {
-      "price": 71192,
-      "change_pct": 4.69
+      "price": 70985,
+      "change_pct": -1.43
     },
-    "mood": "Markets are jittery with TSLA down over 4%, but BTC\u2019s 4.69% pump signals risk-on vibes in tech."
+    "mood": "Markets quietly positive (SPY +0.35%) while TSLA and LMND both down ~5%. BTC holding $71K.",
+    "btc_friday_note": ""
   }
 }
