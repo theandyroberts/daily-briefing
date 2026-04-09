@@ -65,10 +65,32 @@
   "movies": {
     "items": [
       {
-        "title": "Check JustWatch this week",
-        "platform": "Various",
+        "title": "Sing Street",
+        "platform": "Netflix",
+        "verdict": "watch",
+        "note": "John Carney's 2016 gem just landed on Netflix. Dublin kid starts a band to impress a girl, ends up making something genuinely good. Great music, real heart. Watch it.",
+        "learn_url": "https://www.justwatch.com/us/movie/sing-street"
+      },
+      {
+        "title": "Big Mistakes \u2014 Season 1",
+        "platform": "Netflix",
+        "verdict": "watch",
+        "note": "New 8-episode series dropped all at once. Worth checking \u2014 if the name is accurate it's probably a docuseries or dark comedy format. New this week so worth a look.",
+        "learn_url": "https://www.justwatch.com/us/tv-show/big-mistakes/season-1"
+      },
+      {
+        "title": "First Reformed",
+        "platform": "Netflix",
+        "verdict": "watch",
+        "note": "Ethan Hawke is incredible in this. A pastor at a small historic church starts to radicalize after a congregant's suicide. Slow burn, genuinely disturbing, Paul Schrader at his best.",
+        "learn_url": "https://www.justwatch.com/us/movie/first-reformed"
+      },
+      {
+        "title": "Mudborn",
+        "platform": "Netflix",
         "verdict": "wait",
-        "note": "Search timed out this morning. Check justwatch.com for what's new \u2014 will have picks here tomorrow."
+        "note": "New release, unknown quantity. Check reviews first before committing.",
+        "learn_url": "https://www.justwatch.com/us/movie/mudborn"
       }
     ]
   },
