@@ -84,6 +84,15 @@ def main():
     with open(OUTPUT_FILE, "w") as f:
         json.dump(prices_data, f, indent=2)
 
+    import shutil, os
+    briefs_dir = os.path.join(os.path.dirname(OUTPUT_FILE), "briefs")
+    os.makedirs(briefs_dir, exist_ok=True)
+    html_src = os.path.join(os.path.dirname(OUTPUT_FILE), "brief.html")
+    html_dst = os.path.join(briefs_dir, now.strftime("%Y-%m-%d") + ".html")
+    if os.path.exists(html_src):
+        shutil.copy2(html_src, html_dst)
+        date_str = now.strftime("%Y-%m-%d")
+        print(f"Copied brief.html → briefs/{date_str}.html")
     print(f"\nWrote {OUTPUT_FILE}")
     print("Done — Rusty handles the rest.")
 
