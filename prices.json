@@ -1,22 +1,22 @@
 {
-  "fetched_at": "2026-04-14T07:32:34.269916-04:00",
+  "fetched_at": "2026-04-16T07:34:00.000000-04:00",
   "is_friday": false,
   "prices": {
     "TSLA": {
-      "price": 352.42,
-      "change_pct": -0.25
+      "price": 391.95,
+      "change_pct": -0.41
     },
     "SPY": {
-      "price": 686.1,
-      "change_pct": -0.05
+      "price": 699.94,
+      "change_pct": -0.10
     },
     "LMND": {
-      "price": 58.74,
-      "change_pct": -0.44
+      "price": 65.86,
+      "change_pct": -0.06
     },
     "BTC": {
-      "price": 74362,
-      "change_24h_pct": 4.95
+      "price": 74358,
+      "change_24h_pct": 0.42
     }
   }
 }
