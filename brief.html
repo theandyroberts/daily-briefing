@@ -654,22 +654,63 @@
     }
 
     // --- Init ---
-    const pageDate = getPageDate();
-    if (pageDate) {
-      renderNav('nav-top', pageDate);
-      renderNav('nav-bottom', pageDate);
+    // Two modes:
+    //   1. Dated archive page (URL contains YYYY-MM-DD) → fetch that day's JSON.
+    //   2. Root / landing page (no date in URL) → fetch brief.json (always-latest)
+    //      and derive the page date from its `generated_at` field. This is the
+    //      fail-open path: if today's cron hasn't run yet, we still show the
+    //      most recent brief rather than a 404.
+    const urlDate = getPageDate();
 
-      const jsonFile = dateStr(pageDate) + '.json';
-      fetch(jsonFile + '?t=' + Date.now())
-        .then(r => { if (!r.ok) throw new Error('Not found'); return r.json(); })
-        .then(data => renderBrief(data))
-        .catch(e => {
-          document.getElementById('content').innerHTML =
-            '<div class="loading" style="animation:none">No brief available for this date.</div>';
-        });
-    } else {
+    function loadWithFallback(urls, onSuccess, onFail) {
+      const tryNext = (i) => {
+        if (i >= urls.length) { onFail(); return; }
+        fetch(urls[i] + (urls[i].indexOf('?') === -1 ? '?' : '&') + 't=' + Date.now())
+          .then(r => { if (!r.ok) throw new Error('not found'); return r.json(); })
+          .then(onSuccess)
+          .catch(() => tryNext(i + 1));
+      };
+      tryNext(0);
+    }
+
+    function showError(msg) {
       document.getElementById('content').innerHTML =
-        '<div class="loading" style="animation:none">Could not determine date from URL.</div>';
+        '<div class="loading" style="animation:none">' + msg + '</div>';
+    }
+
+    if (urlDate) {
+      // Dated archive page
+      renderNav('nav-top', urlDate);
+      renderNav('nav-bottom', urlDate);
+      loadWithFallback(
+        [dateStr(urlDate) + '.json'],
+        renderBrief,
+        () => showError('No brief available for this date.')
+      );
+    } else {
+      // Root page — always show the latest brief
+      loadWithFallback(
+        ['brief.json', 'briefs/' + dateStr(todayET()) + '.json'],
+        (data) => {
+          const when = data.generated_at ? new Date(data.generated_at) : todayET();
+          const pageDate = new Date(when.getFullYear(), when.getMonth(), when.getDate());
+          // Nav uses relative links; from the root we target briefs/
+          renderNav('nav-top', pageDate);
+          renderNav('nav-bottom', pageDate);
+          // Fix nav link hrefs: we're at the site root, not inside briefs/
+          document.querySelectorAll('.nav-link').forEach(a => {
+            const href = a.getAttribute('href');
+            if (!href) return;
+            if (/^\d{4}-\d{2}-\d{2}\.html$/.test(href)) {
+              a.setAttribute('href', 'briefs/' + href);
+            } else if (href === '../') {
+              a.setAttribute('href', './');
+            }
+          });
+          renderBrief(data);
+        },
+        () => showError('Could not load the latest brief.')
+      );
     }
   </script>
 </body>

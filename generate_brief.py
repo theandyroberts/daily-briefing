@@ -93,6 +93,11 @@ def main():
         shutil.copy2(html_src, html_dst)
         date_str = now.strftime("%Y-%m-%d")
         print(f"Copied brief.html → briefs/{date_str}.html")
+        # Keep the root index.html synced so `/` always renders the latest
+        # brief directly (no JS redirect, no 404 window on cron misses).
+        index_dst = os.path.join(os.path.dirname(OUTPUT_FILE) or ".", "index.html")
+        shutil.copy2(html_src, index_dst)
+        print("Copied brief.html → index.html")
     print(f"\nWrote {OUTPUT_FILE}")
     print("Done — Rusty handles the rest.")
 
