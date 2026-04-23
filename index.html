@@ -526,11 +526,13 @@
     }
 
     function changeCls(pct) {
+      if (pct == null || isNaN(pct)) return '';
       return pct >= 0 ? 'positive' : 'negative';
     }
 
     function changeStr(pct) {
-      return (pct >= 0 ? '+' : '') + pct.toFixed(2) + '%';
+      if (pct == null || isNaN(pct)) return '—';
+      return (pct >= 0 ? '+' : '') + Number(pct).toFixed(2) + '%';
     }
 
     function tagHtml(tag) {
@@ -644,7 +646,7 @@
           <div class="macro-item"><span class="macro-ticker">SPY</span> <span class="macro-price">$${mc.spy.price.toFixed(2)}</span> <span class="macro-change ${changeCls(mc.spy.change_pct)}">${changeStr(mc.spy.change_pct)}</span></div>
           <div class="macro-item"><span class="macro-ticker">TSLA</span> <span class="macro-price">$${mc.tsla.price.toFixed(2)}</span> <span class="macro-change ${changeCls(mc.tsla.change_pct)}">${changeStr(mc.tsla.change_pct)}</span></div>
           <div class="macro-item"><span class="macro-ticker">LMND</span> <span class="macro-price">$${mc.lmnd.price.toFixed(2)}</span> <span class="macro-change ${changeCls(mc.lmnd.change_pct)}">${changeStr(mc.lmnd.change_pct)}</span></div>
-          <div class="macro-item"><span class="macro-ticker">BTC</span> <span class="macro-price">$${mc.btc.price.toLocaleString()}</span> <span class="macro-change ${changeCls(mc.btc.change_pct)}">${changeStr(mc.btc.change_pct)}</span></div>
+          <div class="macro-item"><span class="macro-ticker">BTC</span> <span class="macro-price">$${mc.btc.price.toLocaleString()}</span> <span class="macro-change ${changeCls(mc.btc.change_pct ?? mc.btc.change_24h_pct)}">${changeStr(mc.btc.change_pct ?? mc.btc.change_24h_pct)}</span></div>
         </div>
         <div class="macro-mood">${esc(mc.mood)}</div>
         ${mc.btc_friday_note ? `<div class="macro-friday">&#8383; ${esc(mc.btc_friday_note)}</div>` : ''}
@@ -662,15 +664,17 @@
     //      most recent brief rather than a 404.
     const urlDate = getPageDate();
 
-    function loadWithFallback(urls, onSuccess, onFail) {
-      const tryNext = (i) => {
-        if (i >= urls.length) { onFail(); return; }
-        fetch(urls[i] + (urls[i].indexOf('?') === -1 ? '?' : '&') + 't=' + Date.now())
-          .then(r => { if (!r.ok) throw new Error('not found'); return r.json(); })
-          .then(onSuccess)
-          .catch(() => tryNext(i + 1));
-      };
-      tryNext(0);
+    // Try each URL in turn until one returns JSON. Renders are the caller's
+    // responsibility: a throwing renderer must NOT be treated as a fetch
+    // failure (same bug, same data — retrying won't help).
+    function fetchFirst(urls) {
+      const bust = (u) => u + (u.indexOf('?') === -1 ? '?' : '&') + 't=' + Date.now();
+      return urls.reduce(
+        (chain, u) => chain.catch(() =>
+          fetch(bust(u)).then(r => { if (!r.ok) throw new Error('not found'); return r.json(); })
+        ),
+        Promise.reject()
+      );
     }
 
     function showError(msg) {
@@ -678,26 +682,33 @@
         '<div class="loading" style="animation:none">' + msg + '</div>';
     }
 
+    function safeRender(renderFn, data) {
+      try { renderFn(data); }
+      catch (e) {
+        console.error('Brief render failed:', e);
+        showError('Brief render failed: ' + (e && e.message || e) +
+                  '. Check the browser console for details.');
+      }
+    }
+
     if (urlDate) {
       // Dated archive page
       renderNav('nav-top', urlDate);
       renderNav('nav-bottom', urlDate);
-      loadWithFallback(
-        [dateStr(urlDate) + '.json'],
-        renderBrief,
-        () => showError('No brief available for this date.')
-      );
+      fetchFirst([dateStr(urlDate) + '.json'])
+        .then(data => safeRender(renderBrief, data))
+        .catch(() => showError('No brief available for this date.'));
     } else {
-      // Root page — always show the latest brief
-      loadWithFallback(
-        ['brief.json', 'briefs/' + dateStr(todayET()) + '.json'],
-        (data) => {
-          const when = data.generated_at ? new Date(data.generated_at) : todayET();
+      // Root page — always show the latest brief. Tries brief.json first
+      // (always the most recent), falls back to today's dated JSON.
+      fetchFirst(['brief.json', 'briefs/' + dateStr(todayET()) + '.json'])
+        .then(data => safeRender((d) => {
+          const when = d.generated_at ? new Date(d.generated_at) : todayET();
           const pageDate = new Date(when.getFullYear(), when.getMonth(), when.getDate());
-          // Nav uses relative links; from the root we target briefs/
           renderNav('nav-top', pageDate);
           renderNav('nav-bottom', pageDate);
-          // Fix nav link hrefs: we're at the site root, not inside briefs/
+          // Nav targets dated archive pages, but we're at the site root —
+          // rewrite relative hrefs to point into briefs/.
           document.querySelectorAll('.nav-link').forEach(a => {
             const href = a.getAttribute('href');
             if (!href) return;
@@ -707,10 +718,9 @@
               a.setAttribute('href', './');
             }
           });
-          renderBrief(data);
-        },
-        () => showError('Could not load the latest brief.')
-      );
+          renderBrief(d);
+        }, data))
+        .catch(() => showError('Could not load the latest brief.'));
     }
   </script>
 </body>
