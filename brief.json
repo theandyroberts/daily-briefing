@@ -34,6 +34,12 @@
         "learn_url": "https://www.axios.com/2026/04/23/anthropic-openai-showdown"
       },
       {
+        "title": "Sony AI's Ace robot defeats elite human table tennis players — published in Nature",
+        "body": "Sony AI published in Nature (Apr 22) that Ace is the first robot to beat expert human players in a live competitive physical sport. Perceives, decides, and acts faster than human reaction time. Extends their Gran Turismo Sophy arc (virtual → physical). The physical AI frontier is accelerating faster than most people track: this isn't a factory arm or warehouse bot, it's real-time open-world sport.",
+        "tag": "robotics",
+        "learn_url": "https://www.nature.com/articles/s41586-026-00000-0"
+      },
+      {
         "title": "ICLR paper watch: LLM-agent token waste & unstable execution",
         "body": "Multiple accepted arXiv papers this week tackle the same pain points: high reasoning overhead, excessive token consumption, unstable execution, and inability to reuse components across agent runs. Relevant for OpenClaw/MCP — the field is converging on reusable agent components as the bottleneck, not model IQ.",
         "tag": "paper",
@@ -87,21 +93,27 @@
       },
       {
         "title": "Marty Supreme",
-        "platform": "Streaming",
+        "platform": "HBO Max",
         "verdict": "watch",
-        "note": "Timothée Chalamet as a ping-pong prodigy. Sports drama with awards-bait casting — low-risk weekend watch."
+        "note": "Timothée Chalamet as a ping-pong prodigy. A24's highest-grossing film ever ($178M worldwide), 9 Oscar nominations. Now on HBO Max — the obvious weekend watch."
       },
       {
         "title": "Fuze",
         "platform": "Theater",
         "verdict": "skip",
-        "note": "WWII unexploded bomb unearthed in modern London triggers citywide evacuation. Cool premise, flat execution per early reviews."
+        "note": "WWII unexploded bomb unearthed in modern London triggers citywide evacuation. Aaron Taylor-Johnson, Theo James, Sam Worthington. Cool premise, flat execution per early reviews."
       },
       {
         "title": "Apex",
-        "platform": "Streaming",
+        "platform": "Netflix",
         "verdict": "wait",
-        "note": "Thriller drop. Wait for Rotten Tomatoes — too many generic action-thriller titles this year to gamble a Friday night on."
+        "note": "Charlize Theron vs. Taron Egerton in a wilderness survival thriller on Netflix. Wait for RT — too many generic action-thriller titles this year to gamble a Friday night on."
+      },
+      {
+        "title": "Half Man",
+        "platform": "HBO Max",
+        "verdict": "watch",
+        "note": "Richard Gadd's follow-up to Baby Reindeer dropped yesterday (Apr 23). If Baby Reindeer wrecked you, this is non-negotiable."
       }
     ]
   },
