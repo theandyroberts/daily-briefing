@@ -77,11 +77,11 @@
   },
   "tesla_spacex_xai": {
     "tesla": {
-      "price": 376.30,
+      "price": 376.3,
       "change_pct": 0.27,
       "note": "TSLA up modestly Monday morning. Cybercab production officially started — Musk posted 'Cybercab has started production' on Apr 24. Tesla guides volume production for both Cybercab and Semi later this year. Manufacturing context: Gigafactory Texas, 'Unboxed' parallel-module process, theoretical 1 unit/10s at full ramp. Robotaxi network: ~15 unsupervised Model Ys in Austin, ~600 total (supervised + unsupervised) across Austin/Houston/Dallas, with 60+ prepped in Phoenix. Watch the leadership-exodus signal — 3 senior Cybercab program leaders have left since February."
     },
-    "spacex": "Starship Flight 12 (V3 debut) still NET early-to-mid May 2026. Same status as Friday: Ship 39 + Booster 19 hardware ready (full static fires + WDRs done), Pad 2 commissioning near complete, Raptor 3 engines making their first flight. First launch from OLP-2. FCC license window runs Apr 5 – Oct 5 so SpaceX has flex. Target: ~100 tons to LEO, ~3x V2. No tower catch attempt expected on this first V3 flight.",
+    "spacex": "LIVE TODAY: Falcon Heavy launches ViaSat-3 F3 from KSC — window opens 10:21am ET. First Falcon Heavy in 18 months. Two side boosters (B1072 + B1075) land at LZ-2 and LZ-40; center core expended. Third and final ViaSat-3 bird targeting Asia-Pacific coverage. Watch live at spacex.com. // Starship Flight 12 (V3 debut) still NET early-to-mid May 2026. Same status as Friday: Ship 39 + Booster 19 hardware ready (full static fires + WDRs done), Pad 2 commissioning near complete, Raptor 3 engines making their first flight. First launch from OLP-2. FCC license window runs Apr 5 – Oct 5 so SpaceX has flex. Target: ~100 tons to LEO, ~3x V2. No tower catch attempt expected on this first V3 flight.",
     "xai": "Quiet week for xAI. No fresh model drops; Grok-3 preview chatter from earlier this month is still the active conversation. @xai and @elonmusk have been in Tesla/Cybercab mode, not xAI mode. Watch for xAI traffic to pick up if/when GPT-5.5's agent positioning lands competitive answers from Grok."
   },
   "movies": {
@@ -148,7 +148,7 @@
       "change_pct": -0.01
     },
     "tsla": {
-      "price": 376.30,
+      "price": 376.3,
       "change_pct": 0.27
     },
     "lmnd": {
@@ -157,7 +157,7 @@
     },
     "btc": {
       "price": 77870,
-      "change_pct": -0.30
+      "change_pct": -0.3
     },
     "mood": "Quiet Monday open. SPY flat, TSLA inching up post-Cybercab production news (market still wants units shipped, not tweets). LMND down a bit, BTC giving back a touch around $77.9K. Nothing-burger tape — good day to push project work, not to stare at price action."
   }

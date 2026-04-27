@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-04-27T07:31:11.114342-04:00",
+  "fetched_at": "2026-04-27T07:40:55.283932-04:00",
   "is_friday": false,
   "prices": {
     "TSLA": {
@@ -15,8 +15,8 @@
       "change_pct": -0.93
     },
     "BTC": {
-      "price": 77870,
-      "change_24h_pct": -0.3
+      "price": 77791,
+      "change_24h_pct": -0.38
     }
   }
 }
